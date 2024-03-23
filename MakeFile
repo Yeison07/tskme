@@ -1,0 +1,20 @@
+include .env
+export 
+
+.PHONY: openapi
+openapi: openapi_http 
+
+
+.PHONY: openapi_http
+openapi_http:
+	@./scripts/openapi-http.sh project internal/project/ports ports
+
+
+#.PHONY: openapi_js
+#openapi_js:
+#	@./scripts/openapi-js.sh user
+
+
+.PHONY: proto
+proto:
+	@./scripts/proto.sh project
