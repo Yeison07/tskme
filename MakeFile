@@ -15,6 +15,3 @@ openapi_http:
 #	@./scripts/openapi-js.sh user
 
 
-.PHONY: proto
-proto:
-	@./scripts/proto.sh project

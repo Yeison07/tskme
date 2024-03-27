@@ -50,30 +50,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Member'
-      Task:
-        type: Object
-        required: 
-        properties:
-          title:
-            type: string
-          description:
-            type: string
-          state:
-            type: string
-          assigned:
-            type: array
-            items: 
-              $ref: '#/components/schemas/Member'
-        Member:
-          type: object
-          required: 
-          properties:
-            name: 
-              type: string
-            lastname:
-              type: string
-            email:
-              type: string
+    Task:
+      type: object
+      required: 
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        assigned:
+          type: array
+          items: 
+            $ref: '#/components/schemas/Member'
+    Member:
+      type: object
+      required: 
+      properties:
+        name: 
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
     Error:
       type: object
       required:

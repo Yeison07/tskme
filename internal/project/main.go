@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 	"os"
@@ -11,6 +10,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/rs/zerolog/log"
 	"github.com/yeison07/tskme/internal/common/server"
+	"github.com/yeison07/tskme/internal/project/ports"
 )
 
 func main() {
@@ -21,16 +21,15 @@ func main() {
 		log.Fatal().Msg("Couldnt find env file")
 		panic(err)
 	}
-	project := CreateNewProject("el pepe", "ete sech", nil, nil)
 
 	serverType := strings.ToLower(os.Getenv("SERVER_TO_RUN"))
 	switch serverType {
 	case "http":
 		server.RunHTTPServer(func(router chi.Router) http.Handler {
+			ports.HandlerFromMux()
 			router.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
 				w.Header().Set("Content-Type", "application/json")
 				w.WriteHeader(http.StatusCreated)
-				json.NewEncoder(w).Encode(project)
 
 			})
 			return router
