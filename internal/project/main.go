@@ -10,7 +10,6 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/rs/zerolog/log"
 	"github.com/yeison07/tskme/internal/common/server"
-	"github.com/yeison07/tskme/internal/project/ports"
 )
 
 func main() {
@@ -26,11 +25,13 @@ func main() {
 	switch serverType {
 	case "http":
 		server.RunHTTPServer(func(router chi.Router) http.Handler {
-			ports.HandlerFromMux()
+			//ports.HandlerFromMux()
 			router.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
 				w.Header().Set("Content-Type", "application/json")
 				w.WriteHeader(http.StatusCreated)
 
+			})
+			router.Get("/print", func(w http.ResponseWriter, r *http.Request) {
 			})
 			return router
 		})
